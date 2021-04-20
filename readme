@@ -11,10 +11,30 @@ run the command : eksctl create cluster -f cluster.yaml
 
 normally wil take 15 minutes to create cluster
 
-to check nodes run:
 
-kubectl get nodes
+# maintain nodegroups and add spot instances
 
-To delete this cluster, run:
+## add a nodegroup
 
-eksctl delete cluster -f cluster.yaml
+extend the yaml file by adding a second nodegroup, consisting of a mix of _ondemand_- and _spot_-instances
+
+eksctl create nodegroup --config-file=eks-course.yaml --include='ng-mixed'
+```
+
+## scaling a nodegroup
+
+to scale the nodegroup _ng-1_ from 3 to 5 nodes, execute:
+
+eksctl scale nodegroup --cluster=EKS-course-cluster --nodes=5 --name=ng-1
+```
+
+## delete a nodegroup
+
+`
+eksctl delete nodegroup --cluster=EKS-course-cluster --name=ng-mixed
+```
+
+or
+
+eksctl delete nodegroup --config-file=eks-course.yaml --include=ng-mixed --approve
+```
