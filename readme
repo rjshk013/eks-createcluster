@@ -1,0 +1,17 @@
+to create a eks cluster glone the repo and edit cluster.yaml
+
+-region
+-instancetype
+-publickeyname
+
+run the command : eksctl create cluster -f cluster.yaml
+
+normally wil take 15 minutes to create cluster
+
+to check nodes run:
+
+kubectl get nodes
+
+To delete this cluster, run:
+
+eksctl delete cluster -f cluster.yaml
