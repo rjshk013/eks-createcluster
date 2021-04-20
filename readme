@@ -1,8 +1,11 @@
 to create a eks cluster glone the repo and edit cluster.yaml
 
+-desiredCapacity: 
+    -volumeSize:
 -region
 -instancetype
 -publickeyname
+-clustername
 
 run the command : eksctl create cluster -f cluster.yaml
 
